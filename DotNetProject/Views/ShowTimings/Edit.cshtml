@@ -1,0 +1,59 @@
+﻿@model DotNetProject.Models.ShowTiming
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@{
+    if (ViewBag.IsAdmin = true)
+    {
+        Layout = "_AdminLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}
+<h1>Edit</h1>
+
+<h4>ShowTiming</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TimingId" />
+            <div class="form-group">
+                <label asp-for="MovieId" class="control-label"></label>
+                <select asp-for="MovieId" class="form-control" asp-items="ViewBag.MovieId"></select>
+                <span asp-validation-for="MovieId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HallId" class="control-label"></label>
+                <select asp-for="HallId" class="form-control" asp-items="ViewBag.HallId"></select>
+
+                <span asp-validation-for="HallId" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <label asp-for="show_datetime" class="control-label"></label>
+                <input asp-for="show_datetime" class="form-control" />
+                <span asp-validation-for="show_datetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="available_seats" class="control-label"></label>
+                <input asp-for="available_seats" class="form-control" />
+                <span asp-validation-for="available_seats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

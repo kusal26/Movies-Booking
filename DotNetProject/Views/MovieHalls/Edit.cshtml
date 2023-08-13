@@ -1,0 +1,54 @@
+﻿@model DotNetProject.Models.MovieHall
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@{
+    if (ViewBag.IsAdmin = true)
+    {
+        Layout = "_AdminLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}
+<h1>Edit</h1>
+
+<h4>MovieHall</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HallId" />
+            <div class="form-group">
+                <label asp-for="HallName" class="control-label"></label>
+                <input asp-for="HallName" class="form-control" />
+                <span asp-validation-for="HallName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HallLocation" class="control-label"></label>
+                <input asp-for="HallLocation" class="form-control" />
+                <span asp-validation-for="HallLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalSeat" class="control-label"></label>
+                <input asp-for="TotalSeat" class="form-control" />
+                <span asp-validation-for="TotalSeat" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-outline-danger" style="text-decoration:none">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

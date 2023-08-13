@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DotNetProject.Models.PricingDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+   
+        Layout = "_AdminLayout";
+   
+}
+
+
+<p>
+    <a asp-action="Create" class="btn btn-light">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                Movies
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <ul>
+                    @foreach(var movie in item.Movies)
+                        {
+                            <li>
+                                @movie.Name
+                            </li>
+                        }
+                    </ul>
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-outline-danger" asp-route-id="@item.PriceId">Edit</a> 
+                    <a asp-action="Details" class="btn btn-outline-success" asp-route-id="@item.PriceId">Details</a> 
+                    <a asp-action="Delete" class="btn btn-outline-warning" asp-route-id="@item.PriceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

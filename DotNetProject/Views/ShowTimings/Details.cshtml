@@ -1,0 +1,51 @@
+﻿@model DotNetProject.Models.ShowTiming
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    if (ViewBag.IsAdmin = true)
+    {
+        Layout = "_AdminLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}
+<h1>Details</h1>
+
+<div>
+    <h4>ShowTiming</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Movies.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Movies.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MovieHall.HallName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MovieHall.HallName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.show_datetime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.show_datetime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.available_seats)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.available_seats)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.TimingId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

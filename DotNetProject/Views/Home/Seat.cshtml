@@ -1,0 +1,34 @@
+﻿@model DotNetProject.dto.Ticket
+
+
+@{
+    ViewData["Title"] = "Seat";
+}
+
+
+<h4 style=" color: rgb(255 255 255)">ShowTiming</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Seat">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p style=" color: rgb(255 255 255)">Available Ticket:@ViewBag.AvailableTicket</p>
+            <div class="form-group">
+                <label asp-for="NoOfticket" class="control-label"></label>
+                <input asp-for="NoOfticket" class="form-control" />
+                <span asp-validation-for="NoOfticket" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit"  value="Buy" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

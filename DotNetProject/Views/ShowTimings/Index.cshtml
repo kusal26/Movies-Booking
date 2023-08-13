@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DotNetProject.Models.ShowTiming>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    if (ViewBag.IsAdmin = true)
+    {
+        Layout = "_AdminLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}
+
+
+<p>
+    <a asp-action="Create" class="btn btn-light">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Movie
+            </th>
+            <th>
+                Hall
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.show_datetime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.available_seats)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movies.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieHall.HallName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.show_datetime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.available_seats)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-outline-danger" asp-route-id="@item.TimingId">Edit</a> |
+                    <a asp-action="Details" class="btn btn-outline-success" asp-route-id="@item.TimingId">Details</a> |
+                    <a asp-action="Delete" class="btn btn-outline-warning" asp-route-id="@item.TimingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DotNetProject.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+  
+        Layout = "_AdminLayout";
+   
+}
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-kight">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Hall Name
+            </th>
+            <th>
+                Show_DateTime
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoOfBookedSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Booking_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShowTiming.MovieHall.HallName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShowTiming.show_datetime)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfBookedSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookedDate)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-outline-danger" asp-route-id="@item.Booking_Id">Edit</a> 
+                    <a asp-action="Details" class="btn btn-outline-success" asp-route-id="@item.Booking_Id">Details</a> 
+                    <a asp-action="Delete" class="btn btn-outline-warning" asp-route-id="@item.Booking_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

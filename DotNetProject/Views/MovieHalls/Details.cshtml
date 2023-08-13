@@ -1,0 +1,40 @@
+﻿@model DotNetProject.Models.MovieHall
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+  
+        Layout = "_AdminLayout";
+   
+}
+<h1>Details</h1>
+
+<div>
+    <h4>MovieHall</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HallName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HallName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HallLocation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HallLocation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalSeat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalSeat)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-outline-success" style="text-decoration:none" asp-route-id="@Model?.HallId">Edit</a>
+    <a asp-action="Index" class="btn btn-outline-danger" style="text-decoration:none">Back </a>
+</div>

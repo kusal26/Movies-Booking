@@ -1,0 +1,41 @@
+﻿@model IEnumerable< Movies>
+<h1>Now Showing</h1>
+<div class="d-flex flex-wrap">
+
+    @foreach (var item in Model)
+    {
+        if (item.ReleaseDate <= DateTime.Now)
+        {
+
+
+            <div class="card m-2" style="width: 18rem; ">
+                <img class="card-img-top" src="@Url.Content(item.ImageUrl)" alt="Movie Pic" style="max-height:190px">
+            <div class="card-body">
+                <h5 class="card-title" style="color:black">@item.Name</h5>
+               
+                <a asp-action="Details" asp-route-Id="@item.MovieId" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+        }
+    }
+</div>
+<h1>Coming soon</h1>
+<div class="d-flex flex-wrap">
+
+    @foreach (var item in Model)
+    {
+
+
+        if (item.ReleaseDate > DateTime.Now)
+        {
+            <div class="card m-2" style="width: 18rem; ">
+                <img class="card-img-top" src="@Url.Content(item.ImageUrl)" alt="Movie Pic" style="max-height:190px">
+            <div class="card-body">
+                    <h5 class="card-title" style="color:black">@item.Name</h5>
+                @* <p class="card-text">@item.Capital</p>*@
+                <a asp-action="Details" asp-route-Id="@item.MovieId" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+        }
+    }
+</div>
